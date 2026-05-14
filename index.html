@@ -8,16 +8,29 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --yellow:#FFE600;--yellow-dark:#E6CF00;--yellow-light:#FFFBE6;
-  --blue:#3483FA;--blue-dark:#2968C8;--blue-deeper:#1A4F9E;
-  --blue-light:#EBF3FF;--blue-mid:#D4E8FF;
-  --dark:#1A1A2E;--text:#333;--gray:#717171;
-  --gray-light:#F5F5F5;--border:#EBEBEB;--white:#fff;
-  --green:#00A650;--green-light:#E8F8EF;
-  --orange:#FF7733;--orange-light:#FFF0E8;
-  --purple:#9B59B6;--purple-light:#F5EEF8;
+  --yellow:#FFF8DC;
+  --yellow-mid:#F5E97A;
+  --yellow-dark:#E8D98A;
+  --yellow-light:#FFFDF0;
+  --blue:#2C3E6B;
+  --blue-dark:#1E2D52;
+  --blue-deeper:#15203D;
+  --blue-light:#EEF2FF;
+  --blue-mid:#C5CFEA;
+  --dark:#1A1A2E;
+  --text:#333;
+  --gray:#717171;
+  --gray-light:#F5F5F5;
+  --border:#EBEBEB;
+  --white:#fff;
+  --green:#2E7D5E;
+  --green-light:#E8F5EE;
+  --orange:#C4631A;
+  --orange-light:#FDF0E6;
+  --purple:#5B3AA8;
+  --purple-light:#EEE8FA;
 }
-body{font-family:'Inter',sans-serif;background:#F2F2F2;color:var(--text);min-height:100vh}
+body{font-family:'Inter',sans-serif;background:#EDEAE3;color:var(--text);min-height:100vh}
 header{background:var(--yellow);height:60px;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;border-bottom:2px solid var(--yellow-dark)}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
 .logo-mark{width:36px;height:36px;background:var(--blue);border-radius:8px;display:flex;align-items:center;justify-content:center}
@@ -27,9 +40,9 @@ header{background:var(--yellow);height:60px;padding:0 2rem;display:flex;align-it
 .header-right{display:flex;align-items:center;gap:8px}
 .btn-back,.lang-link{font-size:12px;font-weight:600;color:var(--blue-deeper);text-decoration:none;background:rgba(255,255,255,0.7);padding:4px 12px;border-radius:20px;border:1px solid var(--yellow-dark);transition:background .15s}
 .btn-back:hover,.lang-link:hover{background:white}
-.badge{background:var(--blue);color:var(--yellow);font-family:'Raleway',sans-serif;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px}
+.badge{background:var(--blue);color:var(--yellow-mid);font-family:'Raleway',sans-serif;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px}
 .hero{background:var(--yellow);padding:2.5rem 2rem 2rem;text-align:center;border-bottom:2px solid var(--yellow-dark)}
-.hero-tag{display:inline-block;background:var(--blue);color:var(--yellow);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:14px}
+.hero-tag{display:inline-block;background:var(--blue);color:var(--yellow-mid);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:14px}
 .hero-title-wrap{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:8px;flex-wrap:wrap}
 .hero-ml-icon{width:46px;height:46px;background:var(--blue);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .hero-ml-icon svg{width:26px;height:26px}
@@ -55,18 +68,18 @@ label{display:block;font-size:12px;font-weight:500;color:var(--text);margin-bott
 label .hint{font-weight:400;color:var(--gray)}
 .field-note{font-size:11px;color:var(--gray);margin-top:4px;background:var(--gray-light);border-radius:6px;padding:5px 8px;border-left:3px solid var(--blue-mid);line-height:1.4}
 input[type="number"]{width:100%;height:38px;border:1.5px solid var(--border);border-radius:8px;padding:0 10px;font-size:14px;font-family:'Inter',sans-serif;color:var(--text);background:var(--white);outline:none;transition:border-color .15s}
-input[type="number"]:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(52,131,250,.1)}
+input[type="number"]:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(44,62,107,.1)}
 .results-sticky{position:sticky;top:76px}
 .result-header{background:var(--blue);padding:1.25rem 1.5rem;border-radius:12px 12px 0 0}
-.result-header .r-label{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:4px}
-.result-header .r-title{font-family:'Raleway',sans-serif;font-size:15px;font-weight:700;color:var(--yellow)}
+.result-header .r-label{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:4px}
+.result-header .r-title{font-family:'Raleway',sans-serif;font-size:15px;font-weight:700;color:var(--yellow-mid)}
 .res-kpis{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:.9rem 1.25rem;border-bottom:1px solid var(--border)}
 .kpi{background:var(--gray-light);border-radius:8px;padding:9px 10px;text-align:center}
 .kpi.hl{background:var(--blue)}
 .kpi-val{font-family:'Raleway',sans-serif;font-size:22px;font-weight:800;color:var(--blue);line-height:1}
-.kpi.hl .kpi-val{color:var(--yellow)}
+.kpi.hl .kpi-val{color:var(--yellow-mid)}
 .kpi-lbl{font-size:9px;color:var(--gray);margin-top:2px;text-transform:uppercase;letter-spacing:.5px}
-.kpi.hl .kpi-lbl{color:rgba(255,255,255,.65)}
+.kpi.hl .kpi-lbl{color:rgba(255,255,255,.6)}
 .res-table-wrap{padding:.75rem 1.25rem;overflow-x:auto}
 .res-table{width:100%;border-collapse:collapse;font-size:11px}
 .res-table th{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gray);padding:5px 6px;border-bottom:2px solid var(--border);text-align:right;white-space:nowrap}
@@ -101,12 +114,12 @@ input[type="number"]:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(52
 <header>
   <a class="logo" href="#">
     <div class="logo-mark">
-      <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="6.5" r="3.5" fill="#FFE600"/><path d="M2.5 17.5c0-4.142 3.358-7.5 7.5-7.5s7.5 3.358 7.5 7.5" stroke="#FFE600" stroke-width="2.2" stroke-linecap="round"/></svg>
+      <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="6.5" r="3.5" fill="#F5E97A"/><path d="M2.5 17.5c0-4.142 3.358-7.5 7.5-7.5s7.5 3.358 7.5 7.5" stroke="#F5E97A" stroke-width="2.2" stroke-linecap="round"/></svg>
     </div>
     <div><div class="logo-name">Mercado Livre</div><div class="logo-sub">Ferramentas Internas</div></div>
   </a>
   <div class="header-right">
-    <a class="btn-back" href="https://mtmtransportes-paginainiciales.vercel.app/">← Página inicial</a>
+    <a class="btn-back" href="https://mtmtransportes-paginainicialpt.vercel.app/">← Página inicial</a>
     <a class="lang-link" href="https://mtmtransportes-meliairlinehaules.vercel.app/">🇦🇷 Español</a>
     <span class="badge">MTM — Produtividade MeliAir · Linehaul</span>
   </div>
@@ -116,7 +129,7 @@ input[type="number"]:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(52
   <div class="hero-tag">Produtividade Operacional · MeliAir</div>
   <div class="hero-title-wrap">
     <div class="hero-ml-icon">
-      <svg viewBox="0 0 26 26" fill="none"><path d="M3 13 L23 13" stroke="#FFE600" stroke-width="2" stroke-linecap="round"/><path d="M14 6 L23 13 L14 20" stroke="#FFE600" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 9 L11 13 L8 17" stroke="#FFE600" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg viewBox="0 0 26 26" fill="none"><path d="M3 13 L23 13" stroke="#F5E97A" stroke-width="2" stroke-linecap="round"/><path d="M14 6 L23 13 L14 20" stroke="#F5E97A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 9 L11 13 L8 17" stroke="#F5E97A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
     <h1>Calculadora de Produtividade MeliAir — Linehaul</h1>
   </div>
@@ -126,7 +139,6 @@ input[type="number"]:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(52
 <div class="container">
 <div class="layout">
 
-<!-- COLUNA ESQUERDA: INPUTS -->
 <div>
 
 <div class="card">
@@ -204,7 +216,6 @@ input[type="number"]:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(52
   </div>
 </div>
 
-<!-- TABELA DE REFERÊNCIA MTM -->
 <div class="premissas-wrap">
   <button class="premissas-btn" onclick="toggleRef()">
     📋 Capacidades MTM de referência (valores em distâncias padrão)
@@ -228,9 +239,8 @@ input[type="number"]:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(52
   </div>
 </div>
 
-</div><!-- fim coluna esquerda -->
+</div>
 
-<!-- COLUNA DIREITA: RESULTADOS -->
 <div class="results-sticky">
   <div class="card">
     <div class="result-header">
@@ -267,7 +277,6 @@ input[type="number"]:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(52
     </div>
   </div>
 
-  <!-- LEGENDA -->
   <div style="margin-top:10px;background:white;border:1px solid var(--border);border-radius:10px;padding:12px 16px;font-size:11px;color:var(--gray);line-height:1.7">
     <strong style="color:var(--dark)">Legenda:</strong><br>
     <span class="tag-fixed">MTM FIXO</span> Capacidade constante — não depende de distâncias.<br>
@@ -277,18 +286,16 @@ input[type="number"]:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(52
   </div>
 </div>
 
-</div><!-- fim layout -->
-</div><!-- fim container -->
+</div>
+</div>
 
 <script>
-// ── MTM CONSTANTES (seg/m) ──────────────────────────────────────────
 var SFISM = 0.540;
 var SFILM = 0.612;
 var HFFB  = 1.260;
 var HFFL  = 0.900;
 var EFIM  = 0.468;
 
-// ── CONSTANTES FIXAS PRÉ-CALCULADAS DO MTM ─────────────────────────
 var FIXED_DESC  = 2348.70;
 var RATE_DESC   = (HFFB + HFFL) * 0.333 * 7/6;
 var FIXED_MANGA = 189.00;
@@ -325,20 +332,20 @@ function calcular(){
 
   if(!ppcam || !sppMA || !sppGY || !sppC) return;
 
-  var camHora     = 3600 / (FIXED_DESC + D1 * RATE_DESC);
-  var phDescCam   = camHora * ppcam;
-  var lamMangaAE  = 3600 / (FIXED_MANGA + D2 * RATE_MANGA);
-  var phMangaAE   = lamMangaAE * sppMA * 4;
-  var lamGaylAE   = 3600 / (FIXED_MANGA + D2 * RATE_MANGA);
-  var phGaylAE    = lamGaylAE * sppGY * 4;
-  var lamGF       = 3600 / (FIXED_GF + D3 * RATE_GF);
-  var phGF        = lamGF * sppGY * 4;
-  var lamRebo     = 3600 / (FIXED_REBO + D4 * RATE_REBO);
+  var camHora      = 3600 / (FIXED_DESC + D1 * RATE_DESC);
+  var phDescCam    = camHora * ppcam;
+  var lamMangaAE   = 3600 / (FIXED_MANGA + D2 * RATE_MANGA);
+  var phMangaAE    = lamMangaAE * sppMA * 4;
+  var lamGaylAE    = 3600 / (FIXED_MANGA + D2 * RATE_MANGA);
+  var phGaylAE     = lamGaylAE * sppGY * 4;
+  var lamGF        = 3600 / (FIXED_GF + D3 * RATE_GF);
+  var phGF         = lamGF * sppGY * 4;
+  var lamRebo      = 3600 / (FIXED_REBO + D4 * RATE_REBO);
   var phArmCarrito = (CAP_ARM_CARR_LAM * sppC) / 2;
-  var phRepSM = CAP_REP_SM * sppGM;
-  var phRepBM = CAP_REP_BM * sppGM;
-  var phRepSG = CAP_REP_SG * sppGG;
-  var phRepBG = CAP_REP_BG * sppGG;
+  var phRepSM  = CAP_REP_SM * sppGM;
+  var phRepBM  = CAP_REP_BM * sppGM;
+  var phRepSG  = CAP_REP_SG * sppGG;
+  var phRepBG  = CAP_REP_BG * sppGG;
   var phRepEsc = CAP_REP_ESC * sppGG;
 
   document.getElementById('kpiDesc').textContent    = fmt2(camHora);
@@ -350,59 +357,45 @@ function calcular(){
     {
       grp: '✈️  Descarga de Caminhão',
       rows:[
-        {nome:'Descarga caminhão AE', tipo:'var',
-         cap: fmt2(camHora)+' caminhões/h',
-         ph: phDescCam, bottleneck:true}
+        {nome:'Descarga caminhão AE', tipo:'var', cap:fmt2(camHora)+' caminhões/h', ph:phDescCam, bottleneck:true}
       ]
     },
     {
       grp: '🤖  Traslado à Lâmina — Empilhadeira',
       rows:[
-        {nome:'Manga Air AE (4 un/viagem)', tipo:'var',
-         cap: fmt2(lamMangaAE)+' lâm/h',
-         ph: phMangaAE},
-        {nome:'Gaylord AE (4 un/viagem)',   tipo:'var',
-         cap: fmt2(lamGaylAE)+' lâm/h',
-         ph: phGaylAE}
+        {nome:'Manga Air AE (4 un/viagem)', tipo:'var', cap:fmt2(lamMangaAE)+' lâm/h', ph:phMangaAE},
+        {nome:'Gaylord AE (4 un/viagem)',   tipo:'var', cap:fmt2(lamGaylAE)+' lâm/h',  ph:phGaylAE}
       ]
     },
     {
       grp: '🏭  Traslado Gaylord',
       rows:[
-        {nome:'Gaylord G empilhadeira (4 un/viagem)', tipo:'var',
-         cap: fmt2(lamGF)+' lâm/h',
-         ph: phGF},
-        {nome:'Gaylord rebocador', tipo:'var',
-         cap: fmt2(lamRebo)+' lâm/h',
-         ph: null, info:true}
+        {nome:'Gaylord G empilhadeira (4 un/viagem)', tipo:'var', cap:fmt2(lamGF)+' lâm/h',   ph:phGF},
+        {nome:'Gaylord rebocador',                     tipo:'var', cap:fmt2(lamRebo)+' lâm/h', ph:null, info:true}
       ]
     },
     {
       grp: '📦  Montagem de Carrito',
       rows:[
-        {nome:'Montagem carrito (2 pessoas)', tipo:'fijo',
-         cap: fmt2(CAP_ARM_CARR_LAM)+' lâm/h · ciclo',
-         ph: phArmCarrito}
+        {nome:'Montagem carrito (2 pessoas)', tipo:'fijo', cap:fmt2(CAP_ARM_CARR_LAM)+' lâm/h · ciclo', ph:phArmCarrito}
       ]
     },
     {
       grp: '⚙️  Set up Lâminas',
       rows:[
-        {nome:'Set up lâminas', tipo:'fijo',
-         cap: '19,78 lâm/h',
-         ph: null}
+        {nome:'Set up lâminas', tipo:'fijo', cap:'19,78 lâm/h', ph:null}
       ]
     },
     {
       grp: '🔧  Armação Lâminas — Rep na Montagem',
       rows:[
-        {nome:'Rep sobre lâmina — Manga',    tipo:'fijo', cap:'2,66 lâm/h',  ph:phRepSM},
-        {nome:'Rep sob lâmina — Manga',      tipo:'fijo', cap:'1,98 lâm/h',  ph:phRepBM, bottleneck:true},
-        {nome:'Rep sobre lâmina — Gaylord',  tipo:'fijo', cap:'1,40 lâm/h',  ph:phRepSG},
-        {nome:'Rep sob lâmina — Gaylord',    tipo:'fijo', cap:'1,13 lâm/h',  ph:phRepBG, bottleneck:true},
-        {nome:'Rep Granel (sob)',             tipo:'fijo', cap:'532 pcts/hh', ph:CAP_REP_GRAN_BAIXO},
-        {nome:'Rep Granel (sobre)',           tipo:'fijo', cap:'429 pcts/hh', ph:CAP_REP_GRAN_SOBRE},
-        {nome:'Rep Escada MLM (Gaylord)',     tipo:'fijo', cap:'1,09 lâm/h',  ph:phRepEsc}
+        {nome:'Rep sobre lâmina — Manga',   tipo:'fijo', cap:'2,66 lâm/h',  ph:phRepSM},
+        {nome:'Rep sob lâmina — Manga',     tipo:'fijo', cap:'1,98 lâm/h',  ph:phRepBM, bottleneck:true},
+        {nome:'Rep sobre lâmina — Gaylord', tipo:'fijo', cap:'1,40 lâm/h',  ph:phRepSG},
+        {nome:'Rep sob lâmina — Gaylord',   tipo:'fijo', cap:'1,13 lâm/h',  ph:phRepBG, bottleneck:true},
+        {nome:'Rep Granel (sob)',            tipo:'fijo', cap:'532 pcts/hh', ph:CAP_REP_GRAN_BAIXO},
+        {nome:'Rep Granel (sobre)',          tipo:'fijo', cap:'429 pcts/hh', ph:CAP_REP_GRAN_SOBRE},
+        {nome:'Rep Escada MLM (Gaylord)',    tipo:'fijo', cap:'1,09 lâm/h',  ph:phRepEsc}
       ]
     }
   ];
@@ -420,8 +413,8 @@ function calcular(){
       } else {
         tagHtml = '<span class="tag-fixed">MTM FIXO</span>';
       }
-      if(r.info)        tagHtml += '<span class="tag-info">INFO</span>';
-      if(r.bottleneck)  tagHtml += '<span class="tag-bottleneck">GARGALO</span>';
+      if(r.info)       tagHtml += '<span class="tag-info">INFO</span>';
+      if(r.bottleneck) tagHtml += '<span class="tag-bottleneck">GARGALO</span>';
 
       var phHtml;
       if(r.info){
