@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de Produtividade MeliAir — Linehaul</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --yellow:#FFF8DC;
+  --yellow-mid:#F5E97A;
+  --yellow-dark:#E8D98A;
+  --yellow-light:#FFFDF0;
+  --blue:#2C3E6B;
+  --blue-dark:#1E2D52;
+  --blue-deeper:#15203D;
+  --blue-light:#EEF2FF;
+  --blue-mid:#C5CFEA;
+  --dark:#1A1A2E;
+  --text:#333;
+  --gray:#717171;
+  --gray-light:#F5F5F5;
+  --border:#EBEBEB;
+  --white:#fff;
+  --green:#2E7D5E;
+  --green-light:#E8F5EE;
+  --orange:#C4631A;
+  --orange-light:#FDF0E6;
+  --purple:#5B3AA8;
+  --purple-light:#EEE8FA;
+}
+body{font-family:'Inter',sans-serif;background:#EDEAE3;color:var(--text);min-height:100vh}
+header{background:var(--yellow);height:60px;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;border-bottom:2px solid var(--yellow-dark)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:36px;height:36px;background:var(--blue);border-radius:8px;display:flex;align-items:center;justify-content:center}
+.logo-mark svg{width:20px;height:20px}
+.logo-name{font-family:'Raleway',sans-serif;font-weight:800;font-size:17px;color:var(--blue-deeper)}
+.logo-sub{font-size:10px;font-weight:600;color:var(--blue-dark);letter-spacing:1px;text-transform:uppercase;margin-top:1px}
+.header-right{display:flex;align-items:center;gap:8px}
+.btn-back,.lang-link{font-size:12px;font-weight:600;color:var(--blue-deeper);text-decoration:none;background:rgba(255,255,255,0.7);padding:4px 12px;border-radius:20px;border:1px solid var(--yellow-dark);transition:background .15s}
+.btn-back:hover,.lang-link:hover{background:white}
+.badge{background:var(--blue);color:var(--yellow-mid);font-family:'Raleway',sans-serif;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px}
+.hero{background:var(--yellow);padding:2.5rem 2rem 2rem;text-align:center;border-bottom:2px solid var(--yellow-dark)}
+.hero-tag{display:inline-block;background:var(--blue);color:var(--yellow-mid);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:14px}
+.hero-title-wrap{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:8px;flex-wrap:wrap}
+.hero-ml-icon{width:46px;height:46px;background:var(--blue);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hero-ml-icon svg{width:26px;height:26px}
+.hero h1{font-family:'Raleway',sans-serif;font-size:clamp(20px,3vw,34px);font-weight:800;color:var(--blue-deeper);letter-spacing:-0.8px;line-height:1.2}
+.container{max-width:1180px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.layout{display:grid;grid-template-columns:1fr 440px;gap:20px;align-items:start}
+@media(max-width:960px){.layout{grid-template-columns:1fr}}
+.card{background:var(--white);border-radius:12px;border:1px solid var(--border)}
+.card+.card{margin-top:16px}
+.card-header{padding:1rem 1.25rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.card-icon{width:32px;height:32px;background:var(--yellow-light);border:1px solid var(--yellow-dark);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px}
+.card-header h2{font-family:'Raleway',sans-serif;font-size:14px;font-weight:700;color:var(--dark)}
+.card-header p{font-size:11px;color:var(--gray);margin-top:1px}
+.card-body{padding:1.25rem}
+.sec-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--blue);margin-bottom:10px;margin-top:4px}
+.divider{border:none;border-top:1px solid var(--border);margin:.9rem 0}
+.field{margin-bottom:.9rem}
+.field:last-child{margin-bottom:0}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+label{display:block;font-size:12px;font-weight:500;color:var(--text);margin-bottom:4px}
+label .hint{font-weight:400;color:var(--gray)}
+input[type="number"]{width:100%;height:38px;border:1.5px solid var(--border);border-radius:8px;padding:0 10px;font-size:14px;font-family:'Inter',sans-serif;color:var(--text);background:var(--white);outline:none;transition:border-color .15s}
+input[type="number"]:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(44,62,107,.1)}
+.results-sticky{position:sticky;top:76px}
+.result-header{background:var(--blue);padding:1.25rem 1.5rem;border-radius:12px 12px 0 0}
+.result-header .r-label{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:4px}
+.result-header .r-title{font-family:'Raleway',sans-serif;font-size:15px;font-weight:700;color:var(--yellow-mid)}
+.res-kpis{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:.9rem 1.25rem;border-bottom:1px solid var(--border)}
+.kpi{background:var(--gray-light);border-radius:8px;padding:9px 10px;text-align:center}
+.kpi.hl{background:var(--blue)}
+.kpi-val{font-family:'Raleway',sans-serif;font-size:22px;font-weight:800;color:var(--blue);line-height:1}
+.kpi.hl .kpi-val{color:var(--yellow-mid)}
+.kpi-lbl{font-size:9px;color:var(--gray);margin-top:2px;text-transform:uppercase;letter-spacing:.5px}
+.kpi.hl .kpi-lbl{color:rgba(255,255,255,.6)}
+.res-table-wrap{padding:.75rem 1.25rem;overflow-x:auto}
+.res-table{width:100%;border-collapse:collapse;font-size:11px}
+.res-table th{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gray);padding:5px 6px;border-bottom:2px solid var(--border);text-align:right;white-space:nowrap}
+.res-table th:first-child{text-align:left}
+.res-table td{padding:6px 6px;border-bottom:1px solid var(--border);vertical-align:middle;color:var(--text)}
+.res-table td:first-child{font-weight:600;color:var(--dark);font-size:11px}
+.res-table td:not(:first-child){text-align:right;font-family:'Raleway',sans-serif;font-size:12px;font-weight:700}
+.res-table tr:last-child td{border-bottom:none}
+.res-table tr.group-hdr td{background:var(--gray-light);font-size:9px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--blue);padding:5px 6px;font-family:'Inter',sans-serif}
+.res-table tr:hover td{background:var(--blue-light)}
+.res-table tr.group-hdr:hover td{background:var(--gray-light)}
+.empty-state{padding:2.5rem 1.5rem;text-align:center;color:var(--gray)}
+.empty-icon{font-size:32px;margin-bottom:10px}
+.empty-state p{font-size:13px;line-height:1.6}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.animate{animation:fadeUp .22s ease forwards}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="#">
+    <div class="logo-mark">
+      <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="6.5" r="3.5" fill="#F5E97A"/><path d="M2.5 17.5c0-4.142 3.358-7.5 7.5-7.5s7.5 3.358 7.5 7.5" stroke="#F5E97A" stroke-width="2.2" stroke-linecap="round"/></svg>
+    </div>
+    <div><div class="logo-name">Mercado Livre</div><div class="logo-sub">Ferramentas Internas</div></div>
+  </a>
+  <div class="header-right">
+    <a class="btn-back" href="https://mtmtransportes-meliairlinehaulpt.vercel.app/">← Voltar</a>
+    <a class="lang-link" href="https://mtmtransportes-meliairlinehaulbres.vercel.app/">🇪🇸 Español</a>
+    <span class="badge">MTM — Produtividade MeliAir · Linehaul</span>
+  </div>
+</header>
+<div class="hero">
+  <div class="hero-tag">Produtividade Operacional · MeliAir · 🇧🇷 Brasil</div>
+  <div class="hero-title-wrap">
+    <div class="hero-ml-icon">
+      <svg viewBox="0 0 26 26" fill="none"><path d="M3 13 L23 13" stroke="#F5E97A" stroke-width="2" stroke-linecap="round"/><path d="M14 6 L23 13 L14 20" stroke="#F5E97A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 9 L11 13 L8 17" stroke="#F5E97A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <h1>Calculadora de Produtividade MeliAir</h1>
+  </div>
+</div>
+<div class="container">
+<div class="layout">
+<div>
+<div class="card">
+  <div class="card-header">
+    <div class="card-icon">📋</div>
+    <div><h2>Dados de Operação</h2><p>Parâmetros do ciclo Linehaul (MLB) — carga de avião a partir de caminhão</p></div>
+  </div>
+  <div class="card-body">
+    <div class="sec-label">Volume e Capacidades</div>
+    <div class="field-row">
+      <div class="field">
+        <label>Pacotes por caminhão <span class="hint">(pcts)</span></label>
+        <input type="number" id="pctsPorCamion" min="100" oninput="calcular()">
+      </div>
+      <div class="field">
+        <label>SPP Carrito <span class="hint">(pcts/carrito)</span></label>
+        <input type="number" id="sppCarrito" min="10" oninput="calcular()">
+      </div>
+    </div>
+    <hr class="divider">
+    <div class="sec-label">SPP — Unidades de Carga</div>
+    <div class="field-row">
+      <div class="field">
+        <label>SPP Manga Air <span class="hint">(pcts/manga)</span></label>
+        <input type="number" id="sppMangaAir" min="1" oninput="calcular()">
+      </div>
+      <div class="field">
+        <label>SPP Gaylord <span class="hint">(pcts/gaylord)</span></label>
+        <input type="number" id="sppGaylord" min="1" oninput="calcular()">
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>Qty pcts granel sobre Manga Air <span class="hint">(pcts/lâm)</span></label>
+        <input type="number" id="sppGranelManga" min="1" oninput="calcular()">
+      </div>
+      <div class="field">
+        <label>Qty pcts granel sobre Gaylord <span class="hint">(pcts/lâm)</span></label>
+        <input type="number" id="sppGranelGaylord" min="1" oninput="calcular()">
+      </div>
+    </div>
+    <div class="field">
+      <label>SPP Lâmina a Granel <span class="hint">(pcts/lâm)</span></label>
+      <input type="number" id="sppLaminaGranel" min="1" oninput="calcular()">
+    </div>
+  </div>
+</div>
+</div>
+<div class="results-sticky">
+  <div class="card">
+    <div class="result-header">
+      <div class="r-label">Produtividade por Subprocesso</div>
+      <div class="r-title">MeliAir — Linehaul · 🇧🇷 Brasil</div>
+    </div>
+    <div class="res-kpis" id="kpiSection">
+      <div class="kpi hl">
+        <div class="kpi-val" id="kpiDesc">—</div>
+        <div class="kpi-lbl">Caminhões/h (descarga)</div>
+      </div>
+      <div class="kpi hl">
+        <div class="kpi-val" id="kpiMangaAE">—</div>
+        <div class="kpi-lbl">Lâm/h Manga AE</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-val" id="kpiRepBG">—</div>
+        <div class="kpi-lbl">Pcts/h Rep sobre Gaylord</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-val" id="kpiCarrito">—</div>
+        <div class="kpi-lbl">Pcts/hh Montagem carrito</div>
+      </div>
+    </div>
+    <div class="res-table-wrap">
+      <div id="tableContainer">
+        <div class="empty-state">
+          <div class="empty-icon">📊</div>
+          <p>Preencha os dados operacionais para ver a produtividade de cada subprocesso.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<script>
+/* ── MTM constants ─────────────────────────────────────────────────────── */
+var CAP_DESC=1.5165, CAP_MANGA_AE=11.001;
+var CAP_ARM_CARR=1.295;
+/* ── Helpers ──────────────────────────────────────────────────────────── */
+function n(id){ return parseFloat(document.getElementById(id).value) || 0; }
+function fmt(v){ if(v == null || isNaN(v) || v <= 0) return '—'; return Math.round(v).toLocaleString('pt-BR'); }
+function fmt2(v){ if(v == null || isNaN(v) || v <= 0) return '—'; return v.toFixed(2); }
+/* ── Cálculo principal ────────────────────────────────────────────────── */
+function calcular(){
+  var ppcam = n('pctsPorCamion');
+  var sppC  = n('sppCarrito');
+  var sppMA = n('sppMangaAir');
+  var sppGY = n('sppGaylord');
+  var sppGM = n('sppGranelManga');
+  var sppGG = n('sppGranelGaylord');
+  var sppLG = n('sppLaminaGranel');
+  if(!ppcam || !sppMA || !sppGY || !sppC) return;
+  var phDescCam    = CAP_DESC    * ppcam;
+  var phMangaAE    = CAP_MANGA_AE * sppMA * 4;
+  var phGaylAE     = CAP_MANGA_AE * sppGY * 4;
+  var phArmCarrito = CAP_ARM_CARR * sppC / 2;
+  var phRepSobM  = 531.91;
+  var phRepSobrM = 396.20;
+  var phRepSobG  = 531.91;
+  var phRepSobrG = 428.63;
+  var phGranSob  = 531.91;
+  var phGranSobr = 428.63;
+  var lamRepSobM  = sppGM > 0 ? phRepSobM  / sppGM : 0;
+  var lamRepSobrM = sppGM > 0 ? phRepSobrM / sppGM : 0;
+  var lamRepSobG  = sppGG > 0 ? phRepSobG  / sppGG : 0;
+  var lamRepSobrG = sppGG > 0 ? phRepSobrG / sppGG : 0;
+  var lamGranSob  = sppLG > 0 ? phGranSob  / sppLG : 0;
+  var lamGranSobr = sppLG > 0 ? phGranSobr / sppLG : 0;
+  document.getElementById('kpiDesc').textContent    = CAP_DESC.toFixed(2);
+  document.getElementById('kpiMangaAE').textContent = CAP_MANGA_AE.toFixed(2);
+  document.getElementById('kpiRepBG').textContent   = fmt(phRepSobrG);
+  document.getElementById('kpiCarrito').textContent = fmt(phArmCarrito);
+  var grupos = [
+    {
+      grp: '✈️  Descarga de Caminhão',
+      rows:[{nome:'Descarga caminhão AE', cap:'1,52 cam/h', ph:phDescCam}]
+    },
+    {
+      grp: '🤖  Traslado à Lâmina — Empilhadeira',
+      rows:[
+        {nome:'Manga Air AE (4 un/viagem)', cap:'11,00 lâm/h', ph:phMangaAE},
+        {nome:'Gaylord AE (4 un/viagem)',   cap:'11,00 lâm/h', ph:phGaylAE}
+      ]
+    },
+    {
+      grp: '📦  Montagem de Carrito',
+      rows:[{nome:'Montagem carrito (2 pessoas)', cap:fmt2(CAP_ARM_CARR)+' carrito/h', ph:phArmCarrito}]
+    },
+    {
+      grp: '⚙️  Set up Lâminas (mesmo para todos)',
+      rows:[{nome:'Set up lâminas', cap:'19,78 lâm/h', ph:null}]
+    },
+    {
+      grp: '🔧  Armação Lâminas — Manga Air',
+      rows:[
+        {nome:'Rep sob tarima — Manga Air',   cap:fmt2(lamRepSobM)+' lâm/h', ph:phRepSobM},
+        {nome:'Rep sobre tarima — Manga Air', cap:fmt2(lamRepSobrM)+' lâm/h', ph:phRepSobrM}
+      ]
+    },
+    {
+      grp: '🔧  Armação Lâminas — Gaylord',
+      rows:[
+        {nome:'Rep sob tarima — Gaylord',   cap:fmt2(lamRepSobG)+' lâm/h', ph:phRepSobG},
+        {nome:'Rep sobre tarima — Gaylord', cap:fmt2(lamRepSobrG)+' lâm/h', ph:phRepSobrG}
+      ]
+    },
+    {
+      grp: '🔧  Armação Lâminas — Granel',
+      rows:[
+        {nome:'Rep sob tarima — Granel',   cap:fmt2(lamGranSob)+' lâm/h', ph:phGranSob},
+        {nome:'Rep sobre tarima — Granel', cap:fmt2(lamGranSobr)+' lâm/h', ph:phGranSobr}
+      ]
+    }
+  ];
+  var html = '<table class="res-table animate"><thead><tr>';
+  html += '<th>Subprocesso</th><th>lâm/h</th><th>Prod. rep (pcts/hh)</th>';
+  html += '</tr></thead><tbody>';
+  grupos.forEach(function(g){
+    html += '<tr class="group-hdr"><td colspan="3">'+g.grp+'</td></tr>';
+    g.rows.forEach(function(r){
+      var phHtml = (r.ph == null) ? '<span style="color:var(--gray)">—</span>' : fmt(r.ph);
+      html += '<tr><td>'+r.nome+'</td><td><span style="font-size:10px;color:var(--gray)">'+r.cap+'</span></td><td>'+phHtml+'</td></tr>';
+    });
+  });
+  html += '</tbody></table>';
+  document.getElementById('tableContainer').innerHTML = html;
+}
+window.addEventListener('load', calcular);
+</script>
+</body>
+</html>
